@@ -27,3 +27,32 @@ kings = 13
 6. console log both card objects, and a message declaring which one has the higher value
 
 */
+
+
+class Deck {
+    constructor(name){
+        this.name = name
+        this.suits = [
+            "Spade", "Hearts", "Diamond", "Club"
+        ]
+    }
+    selectRandom() {
+        let card = {
+            "suit": this.suits[Math.floor(Math.random() * (this.suits.length - 1))],
+            "value": Math.floor(Math.random() * 13)
+        }
+        console.log(`Card generated. \nSuit: ${card.suit}\nValue: ${card.value}\n----------\n`)
+        return card
+    }
+}
+
+const compareCards = (card1, card2) => {
+    if (card1.value == card2.value) console.log("The two cards have the same value")
+    else card1.value > card2.value ? console.log(card1) : console.log(card2)
+}
+
+const test = new Deck("Test Deck") 
+let cardA = test.selectRandom()
+let cardB = test.selectRandom()
+
+compareCards(cardA, cardB)
